@@ -1,0 +1,12 @@
+clone a installation between 2 ubuntu machines
+
+run 
+        sudo dpkg --get-selections | sed "s/.*deinstall//" | sed "s/install$//g" > ~/pkglist
+on the old server
+
+
+transfer pkglist file to new server and excute 
+        sudo aptitude update && cat pkglist | xargs sudo aptitude install -y
+on the new server
+
+
