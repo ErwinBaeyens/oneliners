@@ -9,4 +9,9 @@ transfer pkglist file to new server and excute
         sudo aptitude update && cat pkglist | xargs sudo aptitude install -y
 on the new server
 
+make a set of servers boot into the bios on their next boot
 
+for i in <range of ip host addresses>; do
+    ipmitool -H 172.18.201.$i -U <ipmiuser> -P <ipmiuser_passwd> chassis bootdev [bios, pxe, ....]
+    ipmitool -H 172.18.201.$i -U <ipmiuser> -P <ipmiuser_passwd> chassis power [soft, cycle]
+done
