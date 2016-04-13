@@ -15,3 +15,10 @@ for i in <range of ip host addresses>; do
     ipmitool -H 172.18.201.$i -U <ipmiuser> -P <ipmiuser_passwd> chassis bootdev [bios, pxe, ....]
     ipmitool -H 172.18.201.$i -U <ipmiuser> -P <ipmiuser_passwd> chassis power [soft, cycle]
 done
+
+
+Find out  which interfaces have network:
+ip link set dev <dev> up
+reply on ip a should be : 
+    <BROADCAST,MULTICAST,UP,LOWER_UP>  = up en link
+    
