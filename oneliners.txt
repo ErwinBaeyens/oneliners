@@ -22,3 +22,7 @@ ip link set dev <dev> up
 reply on ip a should be : 
     <BROADCAST,MULTICAST,UP,LOWER_UP>  = up en link
     
+
+regular expression to match all kinds of MAC address forms
+egrep "([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}"
+reger.com: "((([\da-fA-F]){2}[-:]){5}([\da-fA-F]{2}))"
