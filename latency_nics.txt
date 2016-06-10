@@ -1,0 +1,30 @@
+eth0: 
+    link/ether 0c:c4:7a:6c:70:4c brd ff:ff:ff:ff:ff:ff
+    inet 10.108.56.94/23 brd 10.108.57.255 scope global eth0
+       
+3: eth1: 
+    link/ether 0c:c4:7a:6c:70:4d brd ff:ff:ff:ff:ff:ff
+
+4: eth2: 
+    link/ether 0c:c4:7a:ba:8e:60 brd ff:ff:ff:ff:ff:ff
+
+5: eth3: 
+    link/ether 0c:c4:7a:ba:8e:62 brd ff:ff:ff:ff:ff:ff
+
+6: eth4: 
+    link/ether 0c:c4:7a:ba:8e:64 brd ff:ff:ff:ff:ff:ff
+
+7: eth5: 
+    link/ether 0c:c4:7a:ba:8e:66 brd ff:ff:ff:ff:ff:ff
+
+8: eth6: 
+    link/ether 0c:c4:7a:ba:80:a8 brd ff:ff:ff:ff:ff:ff
+
+9: eth7: 
+    link/ether 0c:c4:7a:ba:80:aa brd ff:ff:ff:ff:ff:ff
+
+10: eth8: 
+    link/ether 0c:c4:7a:ba:80:ac brd ff:ff:ff:ff:ff:ff
+
+11: eth9: 
+    link/ether 0c:c4:7a:ba:80:ae brd ff:ff:ff:ff:ff:ff
