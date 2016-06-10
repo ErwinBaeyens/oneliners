@@ -1,0 +1,5 @@
+
+
+sudo unmount /dev/md127
+sudo mdadm --stop /dev/md127
+sudo mdadm --zero-superblock /dev/sdxy
