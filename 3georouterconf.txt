@@ -1,0 +1,431 @@
+!Current Configuration:
+!
+!System Description "Broadcom Trident 56846 Dev System - Fixed 48*10g+configurable mix of 4x40Gb and 16x10Gb , 3.2.0.3, Linux 3.8.13-rt9"
+!System Software Version "3.2.0.3"
+!System Up Time          "22 days 3 hrs 45 mins 27 secs"
+!Cut-through mode is configured as disabled
+!Additional Packages     BGP-4,QOS,Multicast,IPv6,Routing,Data Center
+!Current SNTP Synchronized Time: SNTP Client Mode Is Disabled
+!
+hostname "3geo_Routing_Switch"
+network protocol none
+vlan database
+vlan 101-106,201-206,301-302
+vlan name 101 "StorageNet101"
+vlan name 102 "StorageNet102"
+vlan name 103 "StorageNet103"
+vlan name 104 "StorageNet104"
+vlan name 105 "StorageNet105"
+vlan name 106 "StorageNet106"
+vlan name 201 "ScalerAndIPMINet201"
+vlan name 202 "ScalerNet202"
+vlan name 203 "ScalerAndIPMINet203"
+vlan name 204 "ScalerNet204"
+vlan name 205 "ScalerAndIPMINet205"
+vlan name 206 "ScalerNet206" 
+vlan name 301 "Public1"
+vlan name 302 "Public2"
+vlan routing 101 1
+vlan routing 102 2
+vlan routing 103 3
+vlan routing 104 4
+vlan routing 105 5
+vlan routing 106 6
+vlan routing 201 7
+vlan routing 202 8
+vlan routing 203 9
+vlan routing 204 10
+vlan routing 205 11
+vlan routing 206 12
+vlan routing 301 13
+vlan routing 302 14
+exit
+
+configure
+ip routing
+line console
+exit              
+
+line telnet
+exit
+
+line ssh
+exit
+
+flowcontrol symmetric
+spanning-tree bpduguard
+no spanning-tree vlan 301-302
+spanning-tree mode rapid-pvst
+snmp-server sysname "3geo_Routing_Switch"
+!
+
+interface 0/1
+description 'DC01_Public1_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 301
+exit
+
+interface 0/2
+description 'DC01_Public2_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 302
+exit
+
+interface 0/3
+description 'uplink data'
+switchport mode access
+switchport access vlan 301
+exit
+
+interface 0/4
+shutdown
+exit
+
+interface 0/5
+shutdown
+exit
+
+interface 0/6
+shutdown
+exit
+
+interface 0/7
+description 'DC02_Public1_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 301
+exit
+
+interface 0/8
+description 'DC02_Public2_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 302
+exit
+
+interface 0/9
+shutdown
+exit
+
+interface 0/10
+shutdown
+exit
+
+interface 0/11
+shutdown
+exit
+
+interface 0/12
+shutdown
+exit
+
+interface 0/13
+description 'DC03_Public1_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 301
+exit
+
+interface 0/14
+description 'DC03_Public2_CN01'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 302
+exit              
+
+interface 0/15
+shutdown
+exit
+
+interface 0/16
+shutdown
+exit
+
+interface 0/17
+shutdown
+exit
+
+interface 0/18
+shutdown          
+exit
+
+interface 0/19
+description 'Public1_Tester'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 301
+exit
+
+interface 0/20
+description 'Public2_Tester'
+spanning-tree edgeport
+switchport mode access
+switchport access vlan 302
+exit
+
+interface 0/21    
+shutdown
+exit
+
+interface 0/22
+shutdown
+exit
+
+interface 0/23
+shutdown
+exit
+
+interface 0/24
+shutdown
+exit
+
+interface 0/25
+shutdown
+exit
+
+interface 0/26
+shutdown
+exit
+ 
+interface 0/27
+shutdown
+exit
+
+interface 0/28
+shutdown
+exit
+
+interface 0/29
+shutdown
+exit
+
+interface 0/30
+shutdown
+exit
+
+interface 0/31
+description 'StorageNetAndScalerNet_SW01_Installer'
+switchport mode trunk
+switchport trunk allowed vlan 101,103,105,201,203,205
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/32
+description 'StorageNetAndScalerNet_SW02_Installer'
+switchport mode trunk
+switchport trunk allowed vlan 102,104,106,202,204,206
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/33
+shutdown
+exit
+
+interface 0/34
+shutdown
+exit
+
+interface 0/35    
+shutdown
+exit
+
+interface 0/36
+shutdown
+exit
+
+interface 0/37
+description 'DC01_StorageNet101_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 101
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/38
+description 'DC01_StorageNet102_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 102
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/39
+description 'DC02_StorageNet103_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 103
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/40
+description 'DC02_StorageNet104_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 104
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/41
+description 'DC03_StorageNet105_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 105
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/42
+description 'DC03_StorageNet106_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 106
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/43
+description 'DC01_ScalerNet201_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 201
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/44
+description 'DC01_ScalerNet202_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 202
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/45    
+description 'DC02_ScalerNet203_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 203
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/46
+description 'DC02_ScalerNet204_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 204
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/47
+description 'DC03_ScalerNet205_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 205
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/48
+description 'DC03_ScalerNet206_Uplink'
+switchport mode trunk
+switchport trunk allowed vlan 206
+vlan acceptframe vlanonly
+vlan ingressfilter
+exit
+
+interface 0/49
+shutdown
+exit
+
+interface 0/50    
+shutdown
+exit
+
+interface 0/51
+shutdown
+exit
+
+interface 0/52
+shutdown
+exit
+
+interface vlan 101
+routing
+ip address 172.16.96.1 255.255.224.0
+exit
+
+interface vlan 102
+routing
+ip address 172.16.128.1 255.255.224.0
+exit
+
+interface vlan 103
+routing
+ip address 172.17.96.1 255.255.224.0
+exit
+
+interface vlan 104
+routing
+ip address 172.17.128.1 255.255.224.0
+exit
+
+interface vlan 105
+routing
+ip address 172.18.96.1 255.255.224.0
+exit
+
+interface vlan 106
+routing
+ip address 172.18.128.1 255.255.224.0
+exit
+
+interface vlan 201
+routing
+ip address 172.16.0.1 255.255.224.0
+ip address  172.16.192.1  255.255.224.0  secondary
+exit
+
+interface vlan 202
+routing           
+ip address 172.16.32.1 255.255.224.0
+exit
+
+interface vlan 203
+routing
+ip address 172.17.0.1 255.255.224.0
+ip address  172.17.192.1  255.255.224.0  secondary
+exit
+
+interface vlan 204
+routing
+ip address 172.17.32.1 255.255.224.0
+exit
+
+interface vlan 205
+routing
+ip address 172.18.0.1 255.255.224.0
+ip address  172.18.192.1  255.255.224.0  secondary
+exit
+
+interface vlan 206
+routing
+ip address 172.18.32.1 255.255.224.0
+exit
+
+interface vlan 301
+routing
+ip address 10.108.56.95 255.255.254.0
+exit
+
+interface vlan 302
+routing
+ip address 192.168.2.200 255.255.255.0
+exit              
+
+router ospf
+exit
+ipv6 router ospf
+exit
+ip default-gateway 10.108.56.1
+exit
+
