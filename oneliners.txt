@@ -26,3 +26,11 @@ reply on ip a should be :
 regular expression to match all kinds of MAC address forms
 egrep "([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}"
 reger.com: "((([\da-fA-F]){2}[-:]){5}([\da-fA-F]{2}))"
+
+using a jumphost to access ipmi interfaces:
+log in on the jumphost
+
+y=<jumphost ip>
+x=<remote ipmi interface>
+
+sudo ssh <userid>@$y -L $y:80:$x:80 -L $y:443:$x:443 -L $y:5900:$x:5900 -L $y:5901:$x:5901 -L $y:5120:$x:5120 -L $y:5123:$x:5123 -L $y:623:$x:623
