@@ -34,3 +34,37 @@ y=<jumphost ip>
 x=<remote ipmi interface>
 
 sudo ssh <userid>@$y -L $y:80:$x:80 -L $y:443:$x:443 -L $y:5900:$x:5900 -L $y:5901:$x:5901 -L $y:5120:$x:5120 -L $y:5123:$x:5123 -L $y:623:$x:623
+
+
+setting a password for a scaler user with sherpa
+
+ 	- login on the first scaler node:
+	- start sherpa
+	- run the following:
+	  from scalerim_api.constants import SIM_IdentityFilter
+
+	  t_filter = SIM_IdentityFilter(True, True)
+
+	  accounts = cli.scalerim.identityPageGet('ctx', '', True, True, 100, t_filter)
+	  for account in accounts:
+	      print account
+	      print "\n"
+
+	- from the results look for the account that you want and copy the  canonicalId='.....' part.
+	  cli.clients.scalerim.identitiesGetByCanonicalId('', ['80583... 3e'])
+
+	- the result will be a SIMIdentityOBject:
+	   [SIM_IdentityOption(identity=SIM_Identity(displayName='longevity', creationTime=1479742924.530261,
+	    identityType=1, enabled=True, canonicalId='80583315cc728d98673707f83e',
+	    modificationTime=1479744336.842465, apiKeys=[
+	       SIM_ApiKey(secretKey=None, creationTime=1479744336.841838,
+	       accessKey='AK0KCGY4AYAQYIRKBJAY', enabled=True)],
+	    email='longevity.amplidata.com@relay.amplidata.com',
+	    parentAccountCanonicalId='805833155b728d98673707f83c'))]
+	- run:
+	    cli.clients.scalerim.apiKeyGenerate('','<canonicalId>) the return will
+	    contain the secretkey:
+	    SIM_ApiKey(secretKey='J2F6HvLMGK2R7DaLES2LcymvoXY3xIBUcblsjKA3', creationTime=1479745462.669494, accessKey='AK0W2IY4AYAD6GGFCLFT', enabled=True)
+
+
+SIM_ApiKey(secretKey='78u0uA1pMxlu6siIgfta3TOqr6HanzQWRvUyrcBW', creationTime=1479817764.104068, accessKey='AK0ESWI6AYAG1JX32VLK', enabled=True)

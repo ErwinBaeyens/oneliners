@@ -1,4 +1,6 @@
 from scalerim_api.constants import SIM_IdentityFilter
+import cli
+
 
 # set up the filter
 t_filter = SIM_IdentityFilter(True, True)
@@ -21,3 +23,7 @@ account.email = 'new_email@address.com'
 cli.clients.scalerim.identityUpdate('', account.canonicalId, account.displayName,
                                     account.email, account.enabled)
 
+
+
+# generate a password for the s3 users:
+cli.clients.scalerim.apiKeyGenerate('', '805848309a728d980d97df0161')
